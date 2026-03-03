@@ -1,0 +1,31 @@
+title: CS Tech Study
+description: CS 기초부터 최신 기술까지, 매일 한 걸음씩
+url: "https://blog.honeybarrel.co.kr"
+baseurl: ""
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Build settings
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+timezone: Asia/Seoul
+future: true
+
+# Feed
+feed:
+  path: feed.xml
+
+# Collections
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
+# Exclude
+exclude:
+  - README.md
+  - LICENSE

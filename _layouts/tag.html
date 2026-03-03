@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<div class="tag-archive-page">
+  <header class="page-header">
+    <a href="{{ '/tags/' | relative_url }}" class="back-link">&larr; 전체 태그</a>
+    <h1 class="page-title">
+      <span class="tag-badge tag-{{ page.tag | slugify }}">{{ page.tag }}</span>
+    </h1>
+    <p class="page-desc">{{ site.tags[page.tag] | size }}개의 글</p>
+  </header>
+
+  <div class="post-list">
+    {% assign tag_posts = site.tags[page.tag] %}
+    {% for post in tag_posts %}
+    <a href="{{ post.url | relative_url }}" class="post-card">
+      <div class="post-card-inner">
+        <div class="post-card-meta-top">
+          <time class="post-date">{{ post.date | date: "%Y-%m-%d" }}</time>
+          {% if post.series %}
+          <span class="post-series">{{ post.series }}</span>
+          {% endif %}
+        </div>
+        <h2 class="post-card-title">{{ post.title }}</h2>
+        {% if post.excerpt %}
+        <p class="post-card-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+        {% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>

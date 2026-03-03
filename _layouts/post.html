@@ -1,0 +1,323 @@
+---
+layout: default
+---
+{% comment %}
+  Reading time: Korean CPM 500 / English WPM 200
+{% endcomment %}
+{% assign raw_content = content | strip_html %}
+{% assign words_auto = raw_content | number_of_words: "auto" %}
+{% assign words_en = raw_content | number_of_words %}
+{% assign image_count = content | split: '<img' | size | minus: 1 %}
+
+{% assign korean_chars = words_auto | minus: words_en %}
+{% if korean_chars < 0 %}{% assign korean_chars = 0 %}{% endif %}
+
+{% assign korean_minutes = korean_chars | divided_by: 500 %}
+{% assign english_minutes = words_en | divided_by: 200 %}
+{% assign reading_minutes = korean_minutes | plus: english_minutes %}
+
+{% assign image_seconds = 0 %}
+{% if image_count > 0 %}
+  {% if image_count > 3 %}
+    {% assign image_seconds = 36 | plus: image_count | minus: 3 | times: 3 %}
+  {% else %}
+    {% assign image_seconds = image_count | times: 12 %}
+  {% endif %}
+  {% assign image_minutes = image_seconds | divided_by: 60 %}
+  {% assign reading_minutes = reading_minutes | plus: image_minutes %}
+{% endif %}
+{% if reading_minutes < 1 %}{% assign reading_minutes = 1 %}{% endif %}
+
+<div class="post-layout">
+  <!-- ToC Sidebar (Desktop) -->
+  <aside class="toc-sidebar" id="toc-sidebar" aria-label="목차">
+    <nav class="toc-nav">
+      <h2 class="toc-title">📑 목차</h2>
+      <ol class="toc-list" id="toc-list"></ol>
+    </nav>
+  </aside>
+
+  <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+    <header class="post-header">
+      <a href="{{ '/' | relative_url }}" class="back-link">&larr; Back to home</a>
+      <div class="post-meta-top">
+        <time class="post-date dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+          {{ page.date | date: "%Y-%m-%d" }}
+        </time>
+        <span class="reading-time" aria-label="읽기 시간">
+          <svg class="reading-time-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          {{ reading_minutes }}분 읽기
+        </span>
+        {% for tag in page.tags %}
+        <a href="{{ '/tags/' | relative_url }}{{ tag | slugify }}/" class="post-tag tag-{{ tag | slugify }}">{{ tag }}</a>
+        {% endfor %}
+      </div>
+      {% if page.series %}
+      <span class="post-series">{{ page.series }}</span>
+      {% endif %}
+      <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+    </header>
+
+    {% if page.image %}
+    <div class="post-thumbnail">
+      <img src="{{ page.image | relative_url }}" alt="{{ page.title | escape }} 썸네일" class="post-thumbnail-img" loading="lazy">
+    </div>
+    {% endif %}
+
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="reading-progress" aria-hidden="true">
+      <div class="reading-progress-bar" id="reading-progress-bar"></div>
+    </div>
+
+    <div class="post-content e-content" itemprop="articleBody" id="post-content">
+      {{ content }}
+    </div>
+
+    <!-- 이전/다음 글 네비게이션 -->
+    <nav class="post-navigation">
+      {% if page.previous.url %}
+      <a href="{{ page.previous.url | relative_url }}" class="post-nav-link post-nav-prev">
+        <span class="nav-direction">&larr; 이전 글</span>
+        <span class="nav-title">{{ page.previous.title | truncatewords: 8 }}</span>
+      </a>
+      {% else %}
+      <span class="post-nav-placeholder"></span>
+      {% endif %}
+
+      {% if page.next.url %}
+      <a href="{{ page.next.url | relative_url }}" class="post-nav-link post-nav-next">
+        <span class="nav-direction">다음 글 &rarr;</span>
+        <span class="nav-title">{{ page.next.title | truncatewords: 8 }}</span>
+      </a>
+      {% else %}
+      <span class="post-nav-placeholder"></span>
+      {% endif %}
+    </nav>
+
+    <!-- 관련 글 추천 -->
+    {% assign max_related = 5 %}
+    {% assign min_common_tags = 1 %}
+    {% assign related_posts = "" | split: "" %}
+
+    {% for post in site.posts %}
+      {% if post.url != page.url %}
+        {% assign common_tags = 0 %}
+        {% for tag in page.tags %}
+          {% if post.tags contains tag %}
+            {% assign common_tags = common_tags | plus: 1 %}
+          {% endif %}
+        {% endfor %}
+        {% if common_tags >= min_common_tags %}
+          {% assign related_posts = related_posts | push: post %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign related_count = related_posts | size %}
+    {% if related_count > 0 %}
+    <section class="related-posts">
+      <h2 class="related-title">🔗 관련 글</h2>
+      <div class="related-grid">
+        {% for post in related_posts limit: max_related %}
+        <a href="{{ post.url | relative_url }}" class="related-card">
+          <div class="related-card-inner">
+            <time class="related-date">{{ post.date | date: "%Y-%m-%d" }}</time>
+            <h3 class="related-card-title">{{ post.title | truncatewords: 10 }}</h3>
+            <div class="related-tags">
+              {% for tag in post.tags limit: 2 %}
+              <span class="post-tag tag-{{ tag | slugify }}">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+
+    <footer class="post-footer">
+      <a href="{{ '/' | relative_url }}" class="back-link">&larr; Back to all posts</a>
+    </footer>
+
+    <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+  </article>
+</div>
+
+<!-- Mobile ToC Floating Button -->
+<button class="toc-mobile-btn" id="toc-mobile-btn" aria-label="목차 열기" aria-expanded="false">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="8" y1="6" x2="21" y2="6"></line>
+    <line x1="8" y1="12" x2="21" y2="12"></line>
+    <line x1="8" y1="18" x2="21" y2="18"></line>
+    <line x1="3" y1="6" x2="3.01" y2="6"></line>
+    <line x1="3" y1="12" x2="3.01" y2="12"></line>
+    <line x1="3" y1="18" x2="3.01" y2="18"></line>
+  </svg>
+</button>
+
+<!-- Mobile ToC Bottom Sheet -->
+<div class="toc-mobile-sheet" id="toc-mobile-sheet" aria-hidden="true">
+  <div class="toc-mobile-backdrop" id="toc-mobile-backdrop"></div>
+  <div class="toc-mobile-content">
+    <div class="toc-mobile-header">
+      <span class="toc-mobile-title">📑 목차</span>
+      <button class="toc-mobile-close" id="toc-mobile-close" aria-label="닫기">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    <ol class="toc-list toc-mobile-list" id="toc-mobile-list"></ol>
+  </div>
+</div>
+
+<!-- ToC & Reading Progress Script -->
+<script>
+(function() {
+  'use strict';
+
+  var content = document.getElementById('post-content');
+  var tocList = document.getElementById('toc-list');
+  var tocMobileList = document.getElementById('toc-mobile-list');
+  var tocSidebar = document.getElementById('toc-sidebar');
+
+  if (!content || !tocList) return;
+
+  var headings = content.querySelectorAll('h2, h3');
+  if (headings.length < 2) {
+    if (tocSidebar) tocSidebar.style.display = 'none';
+    var mobileBtn = document.getElementById('toc-mobile-btn');
+    if (mobileBtn) mobileBtn.style.display = 'none';
+    return;
+  }
+
+  var tocHTML = '';
+  headings.forEach(function(heading, i) {
+    if (!heading.id) {
+      heading.id = 'heading-' + i;
+    }
+    var level = heading.tagName === 'H3' ? 'toc-sub' : '';
+    var text = heading.textContent.replace(/^#+\s*/, '').trim();
+    tocHTML += '<li class="toc-item ' + level + '">' +
+      '<a href="#' + heading.id + '" class="toc-link" data-target="' + heading.id + '">' +
+      text + '</a></li>';
+  });
+
+  tocList.innerHTML = tocHTML;
+  if (tocMobileList) tocMobileList.innerHTML = tocHTML;
+
+  var tocLinks = document.querySelectorAll('.toc-link');
+  var activeId = null;
+
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        setActive(entry.target.id);
+      }
+    });
+  }, {
+    rootMargin: '-80px 0px -70% 0px',
+    threshold: 0
+  });
+
+  headings.forEach(function(h) { observer.observe(h); });
+
+  function setActive(id) {
+    if (activeId === id) return;
+    activeId = id;
+    tocLinks.forEach(function(link) {
+      if (link.getAttribute('data-target') === id) {
+        link.classList.add('active');
+        var sidebar = link.closest('.toc-nav');
+        if (sidebar) {
+          var linkRect = link.getBoundingClientRect();
+          var sidebarRect = sidebar.getBoundingClientRect();
+          if (linkRect.top < sidebarRect.top || linkRect.bottom > sidebarRect.bottom) {
+            link.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          }
+        }
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('.toc-link');
+    if (!link) return;
+    e.preventDefault();
+    var targetId = link.getAttribute('data-target');
+    var target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      closeMobileSheet();
+    }
+  });
+
+  // Reading Progress Bar
+  var progressBar = document.getElementById('reading-progress-bar');
+  if (progressBar) {
+    window.addEventListener('scroll', function() {
+      var winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      var contentTop = content.offsetTop;
+      var contentHeight = content.offsetHeight;
+      var winHeight = window.innerHeight;
+      var scrollable = contentHeight - winHeight + contentTop;
+
+      if (scrollable > 0) {
+        var progress = Math.min(Math.max((winScroll - contentTop + winHeight * 0.3) / scrollable * 100, 0), 100);
+        progressBar.style.width = progress + '%';
+      }
+    }, { passive: true });
+  }
+
+  // Mobile ToC
+  var mobileBtn = document.getElementById('toc-mobile-btn');
+  var mobileSheet = document.getElementById('toc-mobile-sheet');
+  var mobileBackdrop = document.getElementById('toc-mobile-backdrop');
+  var mobileClose = document.getElementById('toc-mobile-close');
+
+  function openMobileSheet() {
+    if (mobileSheet) {
+      mobileSheet.classList.add('active');
+      mobileSheet.setAttribute('aria-hidden', 'false');
+      mobileBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeMobileSheet() {
+    if (mobileSheet) {
+      mobileSheet.classList.remove('active');
+      mobileSheet.setAttribute('aria-hidden', 'true');
+      if (mobileBtn) mobileBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (mobileBtn) mobileBtn.addEventListener('click', openMobileSheet);
+  if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobileSheet);
+  if (mobileClose) mobileClose.addEventListener('click', closeMobileSheet);
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeMobileSheet();
+  });
+
+  // Code copy buttons
+  document.querySelectorAll('.post-content pre').forEach(function(pre) {
+    var btn = document.createElement('button');
+    btn.className = 'code-copy-btn';
+    btn.textContent = 'Copy';
+    btn.setAttribute('aria-label', '코드 복사');
+    btn.addEventListener('click', function() {
+      var code = pre.querySelector('code');
+      if (code) {
+        navigator.clipboard.writeText(code.textContent).then(function() {
+          btn.textContent = 'Copied!';
+          setTimeout(function() { btn.textContent = 'Copy'; }, 2000);
+        });
+      }
+    });
+    pre.style.position = 'relative';
+    pre.appendChild(btn);
+  });
+})();
+</script>
