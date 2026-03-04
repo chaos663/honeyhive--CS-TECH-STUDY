@@ -1,18 +1,19 @@
 ---
 layout: post
-title: "[CS Tech Study] 2026.03.04 - DataStructure: 배열과 연결 리스트"
+title: "DataStructure: 배열과 연결 리스트"
 date: 2026-03-04 16:43:53
-excerpt: "한 줄 핵심 정의"
+excerpt: "배열은 연속 메모리로 O(1) 접근이 빠르지만 삽입/삭제가 O(n) / 연결 리스트는 포인터 기반으로 삽입/삭제 O(1)이지만 접근이 O(n) / 용도에 따라 적합한 자료구조를 선택하는 것이 핵심"
 tags: [DataStructure, cs-study]
 image: "/assets/images/thumbnails/2026-03-04-cs-tech-study-20260304---datastructure-배열과-연결-리스트.svg"
 series: "HoneyByte"
 ---
-> 한 줄 핵심 정의
-배열은 메모리 상에 연속적으로 할당되어 빠른 접근(O(1))이 가능하지만, 삽입/삭제 시 요소 이동으로 비효율적입니다(O(n)). 연결 리스트는 노드들이 포인터로 연결되어 삽입/삭제(O(1))가 빠르지만, 접근 시 순차 탐색이 필요하여 느립니다(O(n)). 각 자료구조는 특정 연산에 최적화되어 있어, 사용 사례에 따라 적합한 것을 선택해야 합니다.
+> 배열은 연속 메모리 할당으로 빠른 인덱스 접근을, 연결 리스트는 포인터 기반으로 유연한 삽입/삭제를 제공하는 기본 선형 자료구조이다.
 
-## TL;DR
+## 핵심 요약 (TL;DR)
 
-배열은 메모리 상에 연속적으로 할당되어 빠른 접근(O(1))이 가능하지만, 삽입/삭제 시 요소 이동으로 비효율적입니다(O(n)). 연결 리스트는 노드들이 포인터로 연결되어 삽입/삭제(O(1))가 빠르지만, 접근 시 순차 탐색이 필요하여 느립니다(O(n)). 각 자료구조는 특정 연산에 최적화되어 있어, 사용 사례에 따라 적합한 것을 선택해야 합니다.
+- 배열은 메모리 상에 연속적으로 할당되어 인덱스 기반 접근이 O(1)로 빠르지만, 중간 삽입/삭제 시 요소 이동이 필요해 O(n)입니다.
+- 연결 리스트는 노드가 포인터로 연결되어 삽입/삭제가 O(1)로 빠르지만, 특정 위치 접근 시 순차 탐색이 필요해 O(n)입니다.
+- 빈번한 접근이 필요하면 배열, 빈번한 삽입/삭제가 필요하면 연결 리스트를 선택하세요.
 
 ## 개념 이해
 
@@ -304,69 +305,70 @@ class SinglyLinkedList {
 
 ## 복잡도 분석
 
-| Operation         | Array (Dynamic) | Singly Linked List | Doubly Linked List |
-| :---------------- | :-------------- | :----------------- | :----------------- |
-| Access by Index   | O(1)            | O(n)               | O(n)               |
-| Insertion (Begin) | O(n)            | O(1)               | O(1)               |
-| Insertion (End)   | Amortized O(1)  | O(n) (O(1) if tail ptr) | O(1)               |
-| Insertion (Middle)| O(n)            | O(1) (if prev node known) | O(1) (if prev node known) |
-| Deletion (Begin)  | O(n)            | O(1)               | O(1)               |
-| Deletion (End)    | O(1)            | O(n)               | O(1)               |
-| Deletion (Middle) | O(n)            | O(1) (if prev node known) | O(1) (if prev node known) |
-| Space Complexity  | O(n)            | O(n)               | O(n)               |
+| 연산 | 동적 배열 | 단일 연결 리스트 | 이중 연결 리스트 |
+|------|----------|----------------|----------------|
+| 인덱스 접근 | O(1) | O(n) | O(n) |
+| 맨 앞 삽입 | O(n) | O(1) | O(1) |
+| 맨 뒤 삽입 | 평균 O(1) | O(n) (tail 포인터 있으면 O(1)) | O(1) |
+| 중간 삽입 | O(n) | O(1) (이전 노드 알 때) | O(1) (이전 노드 알 때) |
+| 맨 앞 삭제 | O(n) | O(1) | O(1) |
+| 맨 뒤 삭제 | O(1) | O(n) | O(1) |
+| 중간 삭제 | O(n) | O(1) (이전 노드 알 때) | O(1) (해당 노드 알 때) |
+| 공간 복잡도 | O(n) | O(n) | O(n) |
 
-*   **Note on Linked List Insertion/Deletion**: The O(1) complexity assumes you already have a reference to the node *before* the insertion/deletion point (for singly linked list) or the node itself (for doubly linked list). Finding that node by index still takes O(n).
+> **참고**: 연결 리스트의 삽입/삭제 O(1)은 이미 해당 위치의 노드 참조를 갖고 있을 때의 복잡도입니다. 인덱스로 해당 노드를 찾는 데는 여전히 O(n)이 소요됩니다.
 
 ## 실무 적용
 
-*   **Arrays**:
-    *   `ArrayList` in Java, `list` in Python, `std::vector` in C++ are dynamic arrays used extensively.
-    *   Implementing lookup tables, buffers, or fixed-size data structures.
-    *   Graphics programming for storing vertex data.
-*   **Linked Lists**:
-    *   Implementing stacks and queues.
-    *   Undo/redo functionality in text editors or software.
-    *   Memory management (allocating and deallocating memory blocks).
-    *   Browser history (back/forward navigation).
-    *   Task scheduling in operating systems.
+* **배열 기반 자료구조**:
+    * Java의 `ArrayList`, Python의 `list`, C++의 `std::vector`가 대표적인 동적 배열 구현체입니다.
+    * 룩업 테이블, 버퍼, 고정 크기 데이터 구조에 활용됩니다.
+    * 그래픽 프로그래밍에서 정점(vertex) 데이터 저장에 사용됩니다.
+* **연결 리스트 기반 자료구조**:
+    * 스택과 큐의 내부 구현에 활용됩니다.
+    * 텍스트 에디터의 실행 취소/다시 실행(Undo/Redo) 기능에 사용됩니다.
+    * 운영체제의 메모리 관리(할당/해제 블록 관리)에 활용됩니다.
+    * 브라우저 방문 기록(뒤로/앞으로 탐색)에 사용됩니다.
+    * 운영체제의 태스크 스케줄링에 활용됩니다.
 
 ## 관련 문제
 
-*   **LeetCode**:
-    *   \"Merge Two Sorted Lists\" (Easy) - Linked List manipulation.
-    *   \"Remove Duplicates from Sorted List\" (Easy) - Linked List manipulation.
-    *   \"Container With Most Water\" (Medium) - Array problem with two-pointer approach.
-    *   \"3Sum\" (Medium) - Array problem often solved with sorting and two pointers.
-*   **Baekjoon**:
-    *   10828. 스택 (Stack) - Linked List or Array based.
-    *   10773. 제로 (Stack) - Uses stack logic.
-    *   11650. 좌표 정렬하기 (Sorting Array) - Requires sorting based on array elements.
+### 기초
+* LeetCode: [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) (Easy) — 두 정렬된 연결 리스트를 병합하는 기본 문제
+* LeetCode: [Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/) (Easy) — 정렬된 연결 리스트에서 중복 제거
+* 백준: [10828 - 스택](https://www.acmicpc.net/problem/10828) — 배열 또는 연결 리스트 기반 스택 구현
+* 백준: [10773 - 제로](https://www.acmicpc.net/problem/10773) — 스택 논리를 활용한 기본 문제
+
+### 심화
+* LeetCode: [Container With Most Water](https://leetcode.com/problems/container-with-most-water/) (Medium) — 배열에서 투 포인터를 활용한 최적화
+* LeetCode: [3Sum](https://leetcode.com/problems/3sum/) (Medium) — 정렬 + 투 포인터 기법의 배열 문제
+* 백준: [11650 - 좌표 정렬하기](https://www.acmicpc.net/problem/11650) — 배열 원소 기반 정렬 문제
 
 ## 정리
 
-| Item            | Array                                   | Linked List                               |
-| :-------------- | :-------------------------------------- | :---------------------------------------- |
-| **Structure**   | Contiguous memory                       | Nodes with pointers                       |
-| **Access**      | O(1) (by index)                         | O(n) (sequential)                         |
-| **Insertion**   | O(n) (middle/beginning), Amortized O(1) (end) | O(1) (if position known)                  |
-| **Deletions**   | O(n) (middle/beginning), O(1) (end)     | O(1) (if position known)                  |
-| **Memory**      | Efficient (no overhead per element)     | Overhead per node (pointers)              |
-| **Use Cases**   | Frequent access, less frequent inserts/deletes | Frequent inserts/deletes, sequential access |
+| 항목 | 배열 | 연결 리스트 |
+|------|------|-----------|
+| **구조** | 연속 메모리 | 노드 + 포인터 |
+| **접근** | O(1) (인덱스) | O(n) (순차 탐색) |
+| **삽입** | O(n) (앞/중간), 평균 O(1) (끝) | O(1) (위치를 알 때) |
+| **삭제** | O(n) (앞/중간), O(1) (끝) | O(1) (위치를 알 때) |
+| **메모리** | 효율적 (요소당 오버헤드 없음) | 노드당 포인터 오버헤드 |
+| **적합한 상황** | 빈번한 접근, 적은 삽입/삭제 | 빈번한 삽입/삭제, 순차 접근 |
 
 ## 관련 포스트
 
-*   (No previous related posts found in memory)
+* [OS: 프로세스와 스레드](/2026/03/03/os-프로세스와-스레드/) — 프로세스 제어 블록(PCB)이 연결 리스트로 관리되는 사례
 
 ## 레퍼런스
 
 ### 영상
-*   [Arrays and Linked Lists - Data Structures & Algorithms](https://www.youtube.com/watch?v=T02o0_0_l5k) - freeCodeCamp.org, Comprehensive explanation with diagrams.
-*   [Arrays vs Linked Lists - Computerphile](https://www.youtube.com/watch?v=2rs0f8e3oP4) - Computerphile, Explains the fundamental differences.
+* [Arrays and Linked Lists - Data Structures & Algorithms](https://www.youtube.com/watch?v=T02o0_0_l5k) — freeCodeCamp.org, 다이어그램과 함께 배열과 연결 리스트를 종합적으로 설명
+* [Arrays vs Linked Lists - Computerphile](https://www.youtube.com/watch?v=2rs0f8e3oP4) — Computerphile, 두 자료구조의 근본적 차이를 설명
 
 ### 문서 & 기사
-*   [Arrays vs. Linked Lists: Which is best for your needs?](https://www.freecodecamp.org/news/arrays-vs-linked-lists-which-is-best-for-your-needs/) - freeCodeCamp, Detailed comparison and use cases.
-*   [Array - Wikipedia](https://en.wikipedia.org/wiki/Array_data_structure) - Wikipedia, In-depth information on arrays.
-*   [Linked List - Wikipedia](https://en.wikipedia.org/wiki/Linked_list) - Wikipedia, In-depth information on linked lists.
+* [Arrays vs. Linked Lists: Which is best for your needs?](https://www.freecodecamp.org/news/arrays-vs-linked-lists-which-is-best-for-your-needs/) — freeCodeCamp, 상세 비교 및 활용 사례
+* [Array - Wikipedia](https://en.wikipedia.org/wiki/Array_data_structure) — 배열 자료구조 상세 정보
+* [Linked List - Wikipedia](https://en.wikipedia.org/wiki/Linked_list) — 연결 리스트 상세 정보
 
 ---
-*This post is part of the [HoneyByte](https://blog.honeybarrel.co.kr) series.*
+*이 포스트는 [HoneyByte](https://blog.honeybarrel.co.kr) 시리즈의 일부입니다.*
