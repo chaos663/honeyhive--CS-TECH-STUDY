@@ -1226,7 +1226,7 @@ a.post-tag:hover {
   .post-layout {
     max-width: none;
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 240px minmax(0, var(--max-width));
     gap: 2rem;
   }
 
@@ -1489,7 +1489,7 @@ a.post-tag:hover {
   .home-layout {
     max-width: none;
     display: grid;
-    grid-template-columns: 240px 1fr;
+    grid-template-columns: 240px minmax(0, var(--max-width));
     gap: 2rem;
   }
 
