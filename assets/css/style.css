@@ -22,7 +22,7 @@
   --gradient: linear-gradient(135deg, #6366F1, #8B5CF6);
   --font-body: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --max-width: 800px;
+  --max-width: 720px;
   --glow: 0 4px 20px rgba(99, 102, 241, 0.15), 0 2px 8px rgba(30, 27, 75, 0.08);
   --shadow-card: 0 2px 12px rgba(30, 27, 75, 0.06);
 }
@@ -292,11 +292,10 @@ a:focus-visible {
 
 /* ===== Post Thumbnail ===== */
 .post-thumbnail {
-  margin: 1.5rem auto 2rem;
+  margin: 0 0 2rem;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow-card);
-  max-width: 560px;
 }
 
 .post-thumbnail-img {
@@ -469,6 +468,8 @@ pre.mermaid {
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
+  display: block;
+  overflow-x: auto;
 }
 
 .post-content th,
