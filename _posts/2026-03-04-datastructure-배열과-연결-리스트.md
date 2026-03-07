@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "DataStructure: 배열과 연결 리스트"
-date: 2026-03-04 16:43:53
+date: 2026-03-04 08:00:00 +0900
 excerpt: "배열은 연속 메모리로 O(1) 접근이 빠르지만 삽입/삭제가 O(n) / 연결 리스트는 포인터 기반으로 삽입/삭제 O(1)이지만 접근이 O(n) / 용도에 따라 적합한 자료구조를 선택하는 것이 핵심"
 tags: [DataStructure, cs-study]
 image: "/assets/images/thumbnails/2026-03-04-datastructure-배열과-연결-리스트.svg"

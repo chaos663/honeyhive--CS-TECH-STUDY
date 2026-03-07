@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Network: TCP 혼잡 제어"
-date: 2026-03-06 00:26:49
+date: 2026-03-06 08:00:00 +0900
 excerpt: "네트워크 혼잡 상태를 감지하고 대역폭을 동적으로 조절합니다. 패킷 손실, 지연 증가 등을 혼잡의 지표로 사용하며, Slow Start, Congestion Avoidance, Fast Retransmit/Recovery 등의 알고리즘을 통해 네트워크 붕괴를 방지하고 공평한 대역폭 분배를 돕습니다. Reno, Cubic, BBR 등 다양한 혼잡 제어 알고리즘이 존재합니다."
 tags: [Network, cs-study]
 image: "/assets/images/thumbnails/2026-03-06-network-tcp-혼잡-제어.svg"

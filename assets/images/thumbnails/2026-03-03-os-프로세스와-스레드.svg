@@ -68,7 +68,7 @@
 
     <line x1="180" y1="480" x2="1020" y2="480" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
 
-    <text x="200" y="520" font-family="'Pretendard', 'Apple SD Gothic Neo', sans-serif" font-size="20" font-weight="600" fill="rgba(255,255,255,0.7)">CS Tech Study</text>
+    <text x="200" y="520" font-family="'Pretendard', 'Apple SD Gothic Neo', sans-serif" font-size="20" font-weight="600" fill="rgba(255,255,255,0.7)">HoneyByte</text>
     <text x="1000" y="520" font-family="'Pretendard', 'Apple SD Gothic Neo', sans-serif" font-size="18" font-weight="400" fill="rgba(255,255,255,0.5)" text-anchor="end">2026-03-03</text>
   </g>
 </svg>
