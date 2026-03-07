@@ -292,10 +292,11 @@ a:focus-visible {
 
 /* ===== Post Thumbnail ===== */
 .post-thumbnail {
-  margin: 1.5rem 0 2rem;
+  margin: 1.5rem auto 2rem;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: var(--shadow-card);
+  max-width: 560px;
 }
 
 .post-thumbnail-img {
