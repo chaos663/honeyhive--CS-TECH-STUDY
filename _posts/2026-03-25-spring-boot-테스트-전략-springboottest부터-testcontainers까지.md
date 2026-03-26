@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Spring Boot 테스트 전략 — @SpringBootTest부터 Testcontainers까지"
-date: 2026-03-26 10:19:45 +0900
+date: 2026-03-25 09:00:00 +0900
 excerpt: "Spring Boot의 테스트 전략은 피라미드 구조로 접근한다. 빠르고 가벼운 단위 테스트(Unit Test)를 기반으로, 웹 계층만 로딩하는 `@WebMvcTest`, 데이터 계층만 로딩하는 `@DataJpaTest` 등 슬라이스 테스트를 활용해 빌드 속도를 유지하면서 각 계층을 독립적으로 검증한다. 전체 통합 검증이 필요한 경우 `@SpringBootTest`를 사용하되, Testcontainers로 실제 DB 환경을 컨테이너로 띄워 H2 "
 tags: [CS, cs-study]
-image: "/assets/images/thumbnails/2026-03-26-spring-boot-테스트-전략-springboottest부터-testcontainers.svg"
+image: "/assets/images/thumbnails/2026-03-25-spring-boot-테스트-전략-springboottest부터-testcontainers.svg"
 series: "HoneyByte"
 ---
 > 코드의 신뢰성은 테스트로 증명된다. `@SpringBootTest`부터 슬라이스 테스트, `Testcontainers`까지 — 실무에서 실제로 동작하는 테스트 계층 전략을 코드와 함께 깊이 파헤친다.
@@ -679,10 +679,12 @@ open build/reports/tests/test/index.html
 
 | Part | 주제 | 링크 |
 |------|------|------|
-| Part 1 | Spring Boot 시작하기 | [보러가기](/2026/03/17/spring-boot-getting-started/) |
-| Part 2 | 의존성 주입과 IoC | [보러가기](/2026/03/18/spring-boot-di-ioc/) |
-| Part 3 | 레이어드 아키텍처 | [보러가기](/2026/03/19/spring-boot-layered-architecture/) |
-| Part 4 | Spring Data JPA | [보러가기](/2026/03/20/spring-boot-jpa/) |
+| Part 1 | Spring Boot 시작하기 | 예정 |
+| Part 2 | 의존성 주입과 IoC | 예정 |
+| Part 3 | 레이어드 아키텍처 | 예정 |
+| Part 4 | Spring Data JPA | 예정 |
+| Part 5 | Spring Security | 예정 |
+| Part 6 | REST API 설계 | 예정 |
 | **Part 7** | **테스트 전략** | 현재 글 |
 | Part 8 | 운영 배포 전략 | 예정 |
 
