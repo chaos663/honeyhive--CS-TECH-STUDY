@@ -840,16 +840,16 @@ graph TD
 
 ## 시리즈 안내
 
-| Part | 주제 | 상태 |
+| Part | 주제 | 링크 |
 |------|------|------|
-| Part 1 | Spring Boot 시작하기 | [보러가기](/2026/03/17/spring-boot-getting-started/) |
-| Part 2 | 의존성 주입과 IoC | [보러가기](/2026/03/18/spring-boot-di-ioc/) |
-| Part 3 | 레이어드 아키텍처 | [보러가기](/2026/03/19/spring-boot-layered-architecture/) |
-| Part 4 | Spring Data JPA | [보러가기](/2026/03/20/spring-boot-jpa/) |
-| Part 5 | 예외 처리와 검증 | [보러가기](/2026/03/21/spring-boot-exception/) |
+| Part 1 | Spring Boot 시작하기 | [보러가기](/2026/03/17/spring-boot-시작하기-설치부터-첫-rest-api까지/) |
+| Part 2 | 의존성 주입과 IoC | [보러가기](/2026/03/18/spring-boot-의존성-주입과-ioc-컨테이너-원리부터-실전까지/) |
+| Part 3 | 레이어드 아키텍처 | [보러가기](/2026/03/19/spring-boot-레이어드-아키텍처-controllerservicerepository-완전-해부/) |
+| Part 4 | Spring Data JPA | [보러가기](/2026/03/20/spring-data-jpa-orm-관계-매핑-n1-문제-querydsl-완전-정복/) |
+| Part 5 | 예외 처리와 검증 | [보러가기](/2026/03/21/spring-boot-예외-처리와-검증-커스텀-예외부터-rfc-7807까지/) |
 | **Part 6** | **Spring Security** | 현재 글 |
-| Part 7 | 테스트 전략 | [보러가기](/2026/03/25/spring-boot-testing/) |
-| Part 8 | 운영 배포 전략 | 예정 |
+| Part 7 | 테스트 전략 | [보러가기](/2026/03/25/spring-boot-테스트-전략-springboottest부터-testcontainers까지/) |
+| Part 8 | 배포와 운영 | [보러가기](/2026/03/26/spring-boot-배포와-운영/) |
 
 ---
 
