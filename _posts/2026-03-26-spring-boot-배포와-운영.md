@@ -2,7 +2,7 @@
 layout: post
 title: "Spring Boot 배포와 운영"
 date: 2026-03-26 08:00:00 +0900
-excerpt: "**spring-boot-deep-dive 시리즈 Part 8/8 — 완결편**"
+excerpt: "Spring Boot 애플리케이션을 프로덕션에 안전하게 올리는 전 과정 — Docker 멀티스테이지 빌드, 환경별 프로파일 전략, Actuator 모니터링, Graceful Shutdown, 구조적 로깅까지 다룬다."
 tags: [Tech, cs-study]
 image: "/assets/images/thumbnails/2026-03-26-spring-boot-배포와-운영.svg"
 series: "HoneyByte"

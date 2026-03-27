@@ -2,7 +2,7 @@
 layout: post
 title: "DataStructure: 트리와 이진 탐색 트리"
 date: 2026-03-25 08:00:00 +0900
-excerpt: "**HoneyByte 시리즈** | 매주 수요일 — 자료구조 & 알고리즘"
+excerpt: "트리는 사이클이 없는 계층적 그래프다. 기본 트리 개념부터 이진 탐색 트리(BST), 그리고 BST의 치명적 약점을 극복한 균형 트리 — AVL, 레드-블랙, B-Tree까지 한 번에 깊게 파고든다."
 tags: [DataStructure, cs-study]
 image: "/assets/images/thumbnails/2026-03-25-datastructure-트리와-이진-탐색-트리.svg"
 series: "HoneyByte"
