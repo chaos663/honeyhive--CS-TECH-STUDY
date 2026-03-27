@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Spring Boot 레이어드 아키텍처 — Controller/Service/Repository 완전 해부"
-date: 2026-03-27 12:31:41 +0900
+date: 2026-03-19 09:00:00 +0900
 excerpt: "Spring Boot의 표준 3-Tier Layered Architecture는 `Controller → Service → Repository` 흐름으로 각 계층이 명확한 책임을 가진다. Entity는 DB 매핑 객체이고 DTO는 계층 간 데이터 운반 객체로 역할이 다르다 — Controller에 Entity를 노출하면 API 계약이 DB 스키마에 종속된다. `@Transactional`은 Service 계층에서 비즈니스 단위로 선언하고, 조회"
 tags: [CS, cs-study]
-image: "/assets/images/thumbnails/2026-03-27-spring-boot-레이어드-아키텍처-controllerservicerepository-.svg"
+image: "/assets/images/thumbnails/2026-03-19-spring-boot-레이어드-아키텍처-controllerservicerepository-.svg"
 series: "HoneyByte"
 ---
 > Controller가 Repository를 직접 호출하면 왜 나쁜가? DTO와 Entity를 왜 분리해야 하는가? `@Transactional(readOnly = true)`가 성능에 왜 도움이 되는가? — '그냥 그렇게 한다'가 아닌, 이유를 완전히 이해하는 레이어드 아키텍처.

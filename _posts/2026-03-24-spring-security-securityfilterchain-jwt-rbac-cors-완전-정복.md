@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Spring Security — SecurityFilterChain, JWT, RBAC, CORS 완전 정복"
-date: 2026-03-27 13:11:38 +0900
+date: 2026-03-24 09:00:00 +0900
 excerpt: "Spring Security 6 (Spring Boot 3 기본 포함)는 람다 DSL 기반 `SecurityFilterChain`으로 설정을 구성한다. REST API에서는 세션 대신 JWT(JSON Web Token) 기반 무상태 인증이 표준으로, `OncePerRequestFilter`를 상속한 커스텀 필터가 모든 요청에서 토큰을 검증한다. RBAC(Role-Based Access Control) 로 역할(ADMIN, USER 등)별 엔드포"
 tags: [Application, cs-study]
-image: "/assets/images/thumbnails/2026-03-27-spring-security-securityfilterchain-jwt-rbac-cors-.svg"
+image: "/assets/images/thumbnails/2026-03-24-spring-security-securityfilterchain-jwt-rbac-cors-.svg"
 series: "HoneyByte"
 ---
 > 인증(Authentication)은 "당신이 누구인지", 인가(Authorization)는 "무엇을 할 수 있는지"를 결정한다. Spring Security 6의 람다 DSL, JWT 무상태 인증, RBAC 역할 기반 접근 제어, CORS — 보안 아키텍처의 전체를 코드로 설명한다.

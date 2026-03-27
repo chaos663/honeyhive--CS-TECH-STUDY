@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Spring Data JPA — ORM, 관계 매핑, N+1 문제, QueryDSL 완전 정복"
-date: 2026-03-27 12:44:55 +0900
+date: 2026-03-20 09:00:00 +0900
 excerpt: "JPA(Java Persistence API) 는 객체-관계 매핑(ORM) 표준으로, SQL 대신 객체로 DB를 다룰 수 있게 한다. Hibernate가 JPA의 기본 구현체, Spring Data JPA가 그 위에 `JpaRepository`를 제공한다. N+1 문제는 1번 쿼리로 N개를 조회했을 때 연관 엔티티를 N번 추가 조회하는 성능 함정이다 — 해결 전략은 ① Fetch Join, ② `@EntityGraph`, ③ Batch Size"
 tags: [CS, cs-study]
-image: "/assets/images/thumbnails/2026-03-27-spring-data-jpa-orm-관계-매핑-n1-문제-querydsl-완전-정복.svg"
+image: "/assets/images/thumbnails/2026-03-20-spring-data-jpa-orm-관계-매핑-n1-문제-querydsl-완전-정복.svg"
 series: "HoneyByte"
 ---
 > JPA는 편리하지만 함정이 많다. N+1 쿼리 폭탄, 잘못된 Fetch 전략, 의도치 않은 Lazy 초기화 — 원리를 알아야 피할 수 있다. ORM 매핑부터 N+1 해결, QueryDSL 동적 쿼리까지 실무 관점으로 완전히 정복한다.

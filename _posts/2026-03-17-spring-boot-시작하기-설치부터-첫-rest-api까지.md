@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Spring Boot 시작하기 — 설치부터 첫 REST API까지"
-date: 2026-03-27 12:06:50 +0900
+date: 2026-03-17 09:00:00 +0900
 excerpt: "Spring Boot는 Auto-Configuration + Starter Dependencies + Embedded Server 세 가지 마법으로 Spring의 복잡한 초기 설정을 자동화한다. `start.spring.io`에서 프로젝트를 생성하고, `application.yml`로 설정을 관리하며, `@RestController`로 HTTP API를 선언하면 `java -jar` 한 줄로 서버가 뜬다. Gradle은 빌드 속도와 유연성, M"
 tags: [Application, cs-study]
-image: "/assets/images/thumbnails/2026-03-27-spring-boot-시작하기-설치부터-첫-rest-api까지.svg"
+image: "/assets/images/thumbnails/2026-03-17-spring-boot-시작하기-설치부터-첫-rest-api까지.svg"
 series: "HoneyByte"
 ---
 > Spring의 진입 장벽을 낮추고 '그냥 실행되는' 경험을 선사하는 Spring Boot. 설치, 프로젝트 생성, 첫 API 작성, 빌드, 실행까지 — 처음부터 끝까지 코드와 함께 설명한다.

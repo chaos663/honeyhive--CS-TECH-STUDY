@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Spring Boot 의존성 주입과 IoC 컨테이너 — 원리부터 실전까지"
-date: 2026-03-27 12:20:44 +0900
+date: 2026-03-18 09:00:00 +0900
 excerpt: "IoC(Inversion of Control) 는 객체의 생성과 의존성 연결을 개발자가 아닌 프레임워크(컨테이너)가 담당하는 설계 원칙이다. DI(Dependency Injection) 는 IoC를 구현하는 구체적인 패턴으로, 객체가 직접 의존 객체를 `new`로 생성하지 않고 외부에서 주입받는다. Spring Boot에서 DI는 생성자 주입을 기본으로 사용하고 (`@RequiredArgsConstructor` + `final`), `@Comp"
 tags: [CS, cs-study]
-image: "/assets/images/thumbnails/2026-03-27-spring-boot-의존성-주입과-ioc-컨테이너-원리부터-실전까지.svg"
+image: "/assets/images/thumbnails/2026-03-18-spring-boot-의존성-주입과-ioc-컨테이너-원리부터-실전까지.svg"
 series: "HoneyByte"
 ---
 > Spring을 "그냥 쓰는" 것과 "이해하고 쓰는" 것의 차이는 IoC와 DI에서 갈린다. 제어의 역전이 왜 필요한지, 컨테이너가 빈을 어떻게 관리하는지, 주입 방식별 트레이드오프는 무엇인지 — 코드와 함께 완전히 파헤친다.

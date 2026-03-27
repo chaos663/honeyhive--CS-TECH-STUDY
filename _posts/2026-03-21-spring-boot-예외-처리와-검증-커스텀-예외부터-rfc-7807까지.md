@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "Spring Boot 예외 처리와 검증 — 커스텀 예외부터 RFC 7807까지"
-date: 2026-03-27 12:58:11 +0900
+date: 2026-03-21 09:00:00 +0900
 excerpt: "Spring Boot의 예외 처리 전략은 예외 계층 설계 → `@RestControllerAdvice` 전역 처리 → `@Valid` 입력 검증 → 일관된 에러 응답 4단계로 구성된다. 커스텀 예외는 `ErrorCode` 열거형으로 관리하고, `@ExceptionHandler`가 이를 잡아 클라이언트 친화적인 응답으로 변환한다. Spring Boot 3부터 RFC 7807 표준인 `ProblemDetail`을 지원하여 API 에러 응답을 국제 "
 tags: [CS, cs-study]
-image: "/assets/images/thumbnails/2026-03-27-spring-boot-예외-처리와-검증-커스텀-예외부터-rfc-7807까지.svg"
+image: "/assets/images/thumbnails/2026-03-21-spring-boot-예외-처리와-검증-커스텀-예외부터-rfc-7807까지.svg"
 series: "HoneyByte"
 ---
 > 500 Internal Server Error 하나로 모든 오류를 때우는 API는 클라이언트를 배신하는 것이다. 예외 계층 설계, 검증, 전역 처리, RFC 7807 표준 응답까지 — 현업에서 바로 쓸 수 있는 완전한 예외 처리 전략.
