@@ -1,21 +1,21 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#EF4444"/>
-      <stop offset="50%" stop-color="#B91C1C"/>
-      <stop offset="100%" stop-color="#DC2626"/>
+      <stop offset="0%" stop-color="#22C55E"/>
+      <stop offset="50%" stop-color="#15803D"/>
+      <stop offset="100%" stop-color="#16A34A"/>
     </linearGradient>
     <radialGradient id="blob1Grad" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#FCA5A5" stop-opacity="0.4"/>
-      <stop offset="100%" stop-color="#FCA5A5" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#86EFAC" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#86EFAC" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="blob2Grad" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#F87171" stop-opacity="0.35"/>
-      <stop offset="100%" stop-color="#F87171" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#4ADE80" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#4ADE80" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="blob3Grad" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#DC2626" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#DC2626" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#16A34A" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#16A34A" stop-opacity="0"/>
     </radialGradient>
     <filter id="glassBlur" x="-10%" y="-10%" width="120%" height="120%">
       <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
@@ -60,9 +60,9 @@
     <rect x="535" y="110" width="130" height="36" rx="18" fill="url(#badgeGrad)"/>
     <rect x="535" y="110" width="130" height="36" rx="18" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="0.8"/>
     <g transform="translate(557, 128) scale(0.9)">
-      <rect x="-8" y="-8" width="16" height="16" rx="3" fill="none" stroke="white" stroke-width="1.8"/><line x1="-4" y1="0" x2="4" y2="0" stroke="white" stroke-width="1.5"/><line x1="0" y1="-4" x2="0" y2="4" stroke="white" stroke-width="1.5"/>
+      <ellipse cx="0" cy="-6" rx="8" ry="4" fill="none" stroke="white" stroke-width="1.5"/><path d="M-8-6V6" fill="none" stroke="white" stroke-width="1.5"/><path d="M8-6V6" fill="none" stroke="white" stroke-width="1.5"/><ellipse cx="0" cy="6" rx="8" ry="4" fill="none" stroke="white" stroke-width="1.5"/>
     </g>
-    <text x="575" y="134" font-family="'Pretendard', 'Apple SD Gothic Neo', sans-serif" font-size="18" font-weight="700" fill="#ffffff">OS</text>
+    <text x="575" y="134" font-family="'Pretendard', 'Apple SD Gothic Neo', sans-serif" font-size="18" font-weight="700" fill="#ffffff">Database</text>
 
     <text x="600" y="311" font-family="'Pretendard', 'Apple SD Gothic Neo', sans-serif" font-size="48" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="-0.5">DataStructure: 힙과 우선순위</text>
     <text x="600" y="367" font-family="'Pretendard', 'Apple SD Gothic Neo', sans-serif" font-size="48" font-weight="800" fill="#FFFFFF" text-anchor="middle" letter-spacing="-0.5">큐</text>
