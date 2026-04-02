@@ -158,6 +158,14 @@
 
   <!-- Mermaid.js for diagrams -->
   <script type="module">
+    // kramdown: ```mermaid → <code class="language-mermaid"> 변환
+    document.querySelectorAll('code.language-mermaid').forEach(function(code) {
+      var pre = code.parentElement;
+      var div = document.createElement('div');
+      div.className = 'mermaid';
+      div.textContent = code.textContent;
+      pre.parentNode.replaceChild(div, pre);
+    });
     import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
     mermaid.initialize({
       startOnLoad: true,
